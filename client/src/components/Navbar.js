@@ -20,7 +20,6 @@ export default function Navbar() {
                         </ul>
                     </div>
                 </div>
-                <div className="button btn btn-primary"></div>
             </nav>
         </div>
     )

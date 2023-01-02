@@ -2,9 +2,12 @@ import React from 'react';
 import axios from 'axios';
 import { useEffect,useState } from 'react';
 import Product from '../components/Product';
+import { useDispatch } from 'react-redux';
+import { getAllProducts } from '../actions/productActions';
 
 export default function Homescreen() {
     const [products, setproducts] = useState([]);
+    const dispatch = useDispatch();
     useEffect(()=>{
         axios.get('/api/products/getallproducts').then(res=>{
             setproducts(res.data)
@@ -12,6 +15,7 @@ export default function Homescreen() {
         }).catch(err=>{
             console.log(err)
         })
+        dispatch(getAllProducts());
     }, [])
     return(
         <div>
