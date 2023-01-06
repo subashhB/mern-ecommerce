@@ -44,3 +44,9 @@ h1{
 p{
   text-align: left !important;
 }
+
+input{
+  box-shadow: none !important;
+  margin-top: 10px !important;
+  border: 1px solid black !important;
+}
