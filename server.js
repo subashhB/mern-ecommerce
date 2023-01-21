@@ -6,7 +6,9 @@ require("dotenv").config();
 
 var dbconnection = require("./db");
 var productsRoute = require("./routes/productsRoute");
+var userRoute = require("./routes/userRoute");
 app.use(bodyParser.json());
+app.use('/api/users/', userRoute)
 app.use('/api/products/', productsRoute)
 
 app.get("/", (req,res) =>{

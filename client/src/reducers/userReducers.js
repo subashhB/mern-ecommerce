@@ -14,10 +14,10 @@ export const registerNewUserReducer = (state={}, action)=>{
         case 'USER_REGISTER_FAILED': return{
             ...state,
             loading: false,
-            error: true
+            error: 'User Already Registered'
         }
 
-        default: state
+        default: return state
     }
 
 }

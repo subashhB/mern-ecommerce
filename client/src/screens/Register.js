@@ -17,7 +17,7 @@ export default function Register() {
             password: password
         }
         if(password == cpassword){
-            dispatch(registerNewUser())
+            dispatch(registerNewUser(user))
         }
         else{
             alert("Confirm Password doesn't match")
