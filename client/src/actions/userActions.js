@@ -19,7 +19,9 @@ export const loginUser = (user) => dispatch=>{
         .post("/api/users/login", user)
         .then(res=>{
             dispatch({type:'USER_LOGIN_SUCCESS'})
-            console.log(res);
+            localStorage.setItem('currentUser', JSON.stringify(res.data))
+
+            window.location.href ='/'
         })
         .catch(err=>{
             dispatch({type:'USER_LOGIN_FAILED', payload:err})

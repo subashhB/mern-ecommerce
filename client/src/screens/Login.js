@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import {useDispatch, useSelector} from 'react-redux';
 import { loginUser } from '../actions/userActions';
 
@@ -15,6 +15,11 @@ export default function Login() {
         } 
         dispatch(loginUser(user));      
     }
+    useEffect(()=>{
+        if(localStorage.getItem('currentUser')){
+            window.location.href = '/'
+        }
+    },[])
 
   return (
     <div>
