@@ -29,4 +29,15 @@ router.post('/register', (req,res)=>{
     })
 });
 
+router.post("/login", (req,res)=>{
+    User.find({email: req.body.email, password: req.body.password},(err,docs)=>{
+        if(docs.length>0){
+            res.send("Login Successful");
+        }
+        else{
+            return res.status(400).json({message:'Invalid Credentials'})
+        }
+    })
+})
+
 module.exports = router

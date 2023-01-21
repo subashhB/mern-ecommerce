@@ -12,3 +12,17 @@ export const registerNewUser = (user) => dispatch=>{
             console.log(err);
         })
 }
+
+export const loginUser = (user) => dispatch=>{
+    dispatch({type:'USER_LOGIN_REQUEST'})
+    axios
+        .post("/api/users/login", user)
+        .then(res=>{
+            dispatch({type:'USER_LOGIN_SUCCESS'})
+            console.log(res);
+        })
+        .catch(err=>{
+            dispatch({type:'USER_LOGIN_FAILED', payload:err})
+            console.log(err);
+        })
+}
