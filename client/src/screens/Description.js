@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getProductById } from "../actions/productActions";
+import Loader from "../components/Loader";
+import Error from "../components/Error";
 import { addToCart } from "../actions/cartActions";
 
 export default function Description({match}){
@@ -22,14 +24,9 @@ export default function Description({match}){
     return (
       <div>
         {loading ? (
-          <div
-            className="spinner-border position-absolute top-50 start-50 translate-middle"
-            role="status"
-          >
-            <span className="visually-hidden">Loading...</span>
-          </div>
+          <Loader/>
         ) : error ? (
-          <h1>Somthing went Wrong</h1>
+          <Error error="Something went wrong..."/>
         ) : (
           <div className="row">
             <div className="col-md-6">

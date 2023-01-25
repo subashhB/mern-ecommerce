@@ -5,6 +5,8 @@ import Product from '../components/Product';
 import { useDispatch , useSelector} from 'react-redux';
 import { getAllProductsReducer } from '../reducers/productReducers';
 import { getAllProducts } from '../actions/productActions';
+import Loader from '../components/Loader';
+import Error from '../components/Error';
 
 export default function Homescreen() {
     const getAllProductsState = useSelector(state=>state.getAllProductsReducer)
@@ -17,11 +19,9 @@ export default function Homescreen() {
         <div>
             <div className="row justify-content-center">
                 {loading ? (
-                    <div className="spinner-border position-absolute top-50 start-50 translate-middle" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </div>
+                    <Loader/>
                 ): error? (
-                    <h1>Somthing went Wrong</h1>
+                    <Error error="Something went Wrong..."/>
                 ): (
                     products.map(product=>{
                         return <div className='col-md-3 m-5 card p-2' key={product._id}>
