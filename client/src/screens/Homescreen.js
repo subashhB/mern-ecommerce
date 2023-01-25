@@ -7,6 +7,7 @@ import { getAllProductsReducer } from '../reducers/productReducers';
 import { getAllProducts } from '../actions/productActions';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
+import Filter from '../components/Filter';
 
 export default function Homescreen() {
     const getAllProductsState = useSelector(state=>state.getAllProductsReducer)
@@ -17,6 +18,7 @@ export default function Homescreen() {
     }, [])
     return(
         <div>
+            <Filter/>
             <div className="row justify-content-center">
                 {loading ? (
                     <Loader/>
