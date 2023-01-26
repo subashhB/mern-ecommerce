@@ -51,7 +51,7 @@ export default function Description({match}){
                 <button className="btn btn-dark " onClick={addItemToCart} disabled={!product.countInStock}>ADD TO CART</button>
               </div>
               <hr/>
-              <Review/>
+              <Review product={product}/>
             </div>
           </div>
         )}
