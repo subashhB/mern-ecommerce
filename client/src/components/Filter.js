@@ -10,16 +10,19 @@ export default function Filter() {
   return (
     <div>
       <div className="row justify-content-center">
-        <div className="col-md-3 mt-2 ms-2">
-          <input
-            type="text"
-            placeholder="Search Products"
-            value={searchKey}
-            className="form-control"
-            onChange={(e) => {
-              setsearchKey(e.target.value);
-            }}
-          />
+        <div className="col-md-3 mt-2">
+          <div className="form-group">
+            <input
+                type='text'
+                className="form-control"
+                placeholder="Search Products"
+                id="searchkey"
+                value={searchKey}
+                onChange={(e) => {
+                setsearchKey(e.target.value);
+                }}
+            />
+          </div>
         </div>
         <div className="col-md-2 mt-4 ms-2">
           <select

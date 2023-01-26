@@ -5,6 +5,7 @@ import { getProductById } from "../actions/productActions";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
 import { addToCart } from "../actions/cartActions";
+import Review from "../components/Review";
 
 export default function Description({match}){
     let {id:productId} = useParams();
@@ -49,6 +50,8 @@ export default function Description({match}){
                 <hr />
                 <button className="btn btn-dark " onClick={addItemToCart} disabled={!product.countInStock}>ADD TO CART</button>
               </div>
+              <hr/>
+              <Review/>
             </div>
           </div>
         )}

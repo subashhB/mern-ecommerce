@@ -34,7 +34,7 @@ export default function Login() {
                     {error && (<Error error={error}/>)}
                     {loading && (<Loader/>)}
                    <form onSubmit={login}>
-                        <input type="text" className='form-control' required placeholder='E-mail Address' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
+                        <input type="text" className='form-control mt-3' required placeholder='E-mail Address' value={email} onChange={(e)=>{setEmail(e.target.value)}}/>
                         <input type="text" className='form-control' required placeholder='Password' value={password} onChange={(e)=>{setPassword(e.target.value)}}/>
                         <button type='submit' className='btn btn-dark mt-3 float-center'>Login</button>
                    </form>
