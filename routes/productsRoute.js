@@ -32,11 +32,7 @@ router.post('/addreview', async(req, res) => {
         name: currentUser.name,
         comment: review.comment,
     }
-    console.log(newreview)
-    
     product.reviews.push(newreview)
-    console.log(currentUser._id)
-    console.log(product)
     product.save(err=>{
         if(!err){
             res.send('Review Submitted Successfully');
