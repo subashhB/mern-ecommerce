@@ -38,13 +38,14 @@ export const logoutUser = ()=> dispatch=>{
 
 }
 
-export const updateUser = (updatedUser, userid) => dispatch=>{
+export const updateUser = (updatedUser, userId) => dispatch=>{
     dispatch({type:'UPDATE_USER_REQUEST'})
     axios
-        .post("/api/users/update", {userid, updatedUser})
+        .post("/api/users/update", {userId, updatedUser})
         .then(res=>{
             dispatch({type:'UPDATE_USER_SUCCESS'})
             console.log(res);
+            window.location.reload();
         })
         .catch(err=>{
             dispatch({type:'UPDATE_USER_FAILED', payload:err})

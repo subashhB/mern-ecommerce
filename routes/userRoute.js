@@ -45,4 +45,20 @@ router.post("/login", (req,res)=>{
     })
 })
 
+router.post('/update', (req, res) => {
+    const {userId, updatedUser} = req.body;
+    console.log(updatedUser)
+    User.findByIdAndUpdate({_id: userId}, {
+        name: updatedUser.name,
+        email: updatedUser.email,
+        password: updatedUser.password
+    },(err)=>{
+        if(!err){
+            res.send('User Details Updated Successfully')
+        }else{
+            return res.status(400).json({message:'Somthing went wrong'});
+        }
+
+    })
+});
 module.exports = router

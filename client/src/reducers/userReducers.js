@@ -65,7 +65,7 @@ export const updateUserReducer = (state={}, action)=>{
         case 'UPDATE_USER_FAILED': return{
             ...state,
             loading: false,
-            error: 'User Already Registered'
+            error: 'Something went Wrong'
         }
 
         default: return state
