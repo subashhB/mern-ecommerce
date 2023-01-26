@@ -11,10 +11,6 @@ const reviewSchema = mongoose.Schema({
     comment:{
         type: String,
     },
-    rating:{
-        type: Number,
-        required: true
-    }
 },{
     timeStamps: true
 })

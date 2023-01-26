@@ -24,4 +24,28 @@ router.post('/getproductbyid', (req,res)=>{
     })
 });
 
+router.post('/addreview', async(req, res) => {
+    const {review, productId, currentUser} = req.body
+    const product = await Product.findOne({_id: productId})
+    const newreview = {
+        userId: currentUser._id,
+        name: currentUser.name,
+        comment: review.comment,
+    }
+    console.log(newreview)
+    
+    product.reviews.push(newreview)
+    console.log(currentUser._id)
+    console.log(product)
+    product.save(err=>{
+        if(!err){
+            res.send('Review Submitted Successfully');
+        }else{
+            return res.status(400).json({message:'Something went wrong'});
+        }
+    })
+});
+
+
+
 module.exports = router
