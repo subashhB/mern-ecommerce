@@ -7,20 +7,25 @@ export default function Review({product}) {
     const [comment, setComment] = useState("")
     const dispatch = useDispatch();
     const sendReview =()=>{
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'))
-        var alreadyReviewed;
-        for(var i=0; i<product.reviews.length; i++){
-          if(product.reviews[i].userId == currentUser._id){
-            alreadyReviewed = true
+        if(localStorage.getItem('currentUser')){
+          const currentUser = JSON.parse(localStorage.getItem('currentUser'))
+          var alreadyReviewed;
+          for(var i=0; i<product.reviews.length; i++){
+            if(product.reviews[i].userId == currentUser._id){
+              alreadyReviewed = true
+            }
           }
-        }
-        if(alreadyReviewed){
-          alert('You have already reviewed this product.')
+          if(alreadyReviewed){
+            alert('You have already reviewed this product.')
+          }
+          else{
+            const review ={comment:comment}
+            dispatch(addProductReview(review, product._id))
+          }  
         }
         else{
-          const review ={comment:comment}
-          dispatch(addProductReview(review, product._id))
-        }  
+          window.location.href = '/login';
+        }
     }
   return (
     <div>

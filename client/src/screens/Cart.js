@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {useDispatch, useSelector} from 'react-redux'
 import { addToCart , deleteFromCart} from '../actions/cartActions'
 
@@ -8,6 +8,13 @@ export default function Cart() {
     const {cartItems} = cartReducerState
 
     var subtotal = cartItems.reduce((acc, item) => acc + (item.price*item.quantity), 0)
+    useEffect(() => {
+      if(!localStorage.getItem('currentUser')){
+        window.location.href ='/login';
+      }
+    }, [])
+    
+    
 
   return (
     <div>

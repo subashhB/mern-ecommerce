@@ -48,3 +48,27 @@ export const loginReducer = (state={}, action)=>{
     }
 
 }
+
+export const updateUserReducer = (state={}, action)=>{
+    switch(action.type){
+        case 'UPDATE_USER_REQUEST': return{
+            ...state,
+            loading: true
+        }
+
+        case 'UPDATE_USER_SUCCESS': return {
+            ...state,
+            loading: false,
+            success: true
+        }
+        
+        case 'UPDATE_USER_FAILED': return{
+            ...state,
+            loading: false,
+            error: 'User Already Registered'
+        }
+
+        default: return state
+    }
+
+}
