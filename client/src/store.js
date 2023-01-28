@@ -1,6 +1,6 @@
 import { addProductReviewReducer, getAllProductsReducer, getProductByIdReducer } from "./reducers/productReducers";
 import {cartReducer} from './reducers/cartReducers';
-import { loginReducer, registerNewUserReducer, updateUserReducer } from "./reducers/userReducers";
+import { getAllUsersReducer, loginReducer, registerNewUserReducer, updateUserReducer } from "./reducers/userReducers";
 import {combineReducers} from 'redux';
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
@@ -13,7 +13,8 @@ const finalReducer = combineReducers({
     registerNewUserReducer: registerNewUserReducer,
     loginReducer: loginReducer,
     addProductReviewReducer: addProductReviewReducer,
-    updateUserReducer: updateUserReducer
+    updateUserReducer: updateUserReducer,
+    getAllUsersReducer: getAllUsersReducer
     
 })
 

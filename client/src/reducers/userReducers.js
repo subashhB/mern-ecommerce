@@ -72,3 +72,27 @@ export const updateUserReducer = (state={}, action)=>{
     }
 
 }
+
+export const getAllUsersReducer = (state={}, action)=>{
+    switch(action.type){
+        case 'GET_ALL_USERS_REQUEST': return{
+            ...state,
+            loading: true
+        }
+
+        case 'GET_ALL_USERS_SUCCESS': return {
+            ...state,
+            loading: false,
+            users: action.payload
+        }
+        
+        case 'GET_ALL_USERS_FAILED': return{
+            ...state,
+            loading: false,
+            error: action.payload
+        }
+
+        default: return state
+    }
+
+}

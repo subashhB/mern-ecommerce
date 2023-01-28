@@ -52,3 +52,16 @@ export const updateUser = (updatedUser, userId) => dispatch=>{
             console.log(err);
         })
 }
+
+export const getAllUsers = () => dispatch=>{
+    dispatch({type:'GET_ALL_USERS_REQUEST'})
+    axios
+        .get('/api/users/getallusers').then(res=>{
+            dispatch({type:'GET_ALL_USERS_SUCCESS', payload: res.data})
+
+        })
+        .catch(err=>{
+            dispatch({type:'GET_ALL_USERS_FAILED', payload: err})
+            console.log(err);
+        })
+}

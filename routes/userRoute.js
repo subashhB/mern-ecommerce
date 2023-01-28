@@ -61,4 +61,16 @@ router.post('/update', (req, res) => {
 
     })
 });
+
+router.get('/getallusers', (req, res) => {
+    User.find({}, (err, docs)=>{
+        if(err){
+            return res.status(400).json({message:'Somthing went wrong'});
+        }
+        else{
+            res.send(docs);
+        }
+    })
+});
+
 module.exports = router
