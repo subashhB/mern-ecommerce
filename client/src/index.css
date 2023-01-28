@@ -50,3 +50,11 @@ input{
   margin-top: 15px !important;
   border: 1px solid black !important;
 }
+.admin{
+  background-color: aquamarine;
+}
+.admin li{
+  list-style-type: none !important;
+  display: inline !important;
+  margin-left: 20px !important;
+}
