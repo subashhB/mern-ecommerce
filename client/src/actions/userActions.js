@@ -65,3 +65,18 @@ export const getAllUsers = () => dispatch=>{
             console.log(err);
         })
 }
+
+export const deleteUser = (userId) => dispatch=>{
+    dispatch({type:'DELETE_USER_REQUEST'})
+    axios
+        .post('/api/users/deleteuser', {userId}).then(res=>{
+            dispatch({type:'DELETE_USER_SUCCESS', payload: res.data})
+            alert('User Deleted!')
+            window.location.reload();
+
+        })
+        .catch(err=>{
+            dispatch({type:'DELETE_USERS_FAILED', payload: err})
+            console.log(err);
+        })
+}

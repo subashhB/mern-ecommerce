@@ -73,4 +73,15 @@ router.get('/getallusers', (req, res) => {
     })
 });
 
+router.post('/deleteuser', (req, res) => {
+    User.findByIdAndDelete(req.body.userId, (err)=>{
+        if(err){
+            return res.status(400).json({message:'Something went wrong'});
+        }
+        else{
+            res.send('User Deleted!');
+        }
+    })
+}); 
+
 module.exports = router

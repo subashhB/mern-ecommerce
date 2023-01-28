@@ -2,11 +2,12 @@ import React, { useState , useEffect} from 'react'
 import { getAllUsersReducer } from '../reducers/userReducers';
 import { useDispatch, useSelector } from 'react-redux'
 import { getAllUsers } from '../actions/userActions';
+import { deleteUser } from '../actions/userActions';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 
 export default function UsersList() {
-    const getAllUsersState = useSelector(state=>state.getAllUsersReducer)
+    const getAllUsersState = useSelector(state => state.getAllUsersReducer)
     const {users, loading, error} = getAllUsersState;
     const dispatch = useDispatch();
     useEffect(() => {
@@ -31,7 +32,7 @@ export default function UsersList() {
                         <td>{user._id}</td>
                         <td>{user.name}</td>
                         <td>{user.email}</td>
-                        <td><i className='fa fa-trash'></i></td>
+                        <td><i className='fa fa-trash' onClick={()=>{dispatch(deleteUser(user._id))}}></i></td>
                     </tr>)
                 })}
             </tbody>
