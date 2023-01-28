@@ -64,5 +64,19 @@ export const addProductReview = (review, productId) => (dispatch, getState)=>{
     }).catch(err=>{
         dispatch({type:'ADD_PRODUCT_REVIEW_FAILED'})
     })
+}
 
+export const deleteProduct = (productId) => dispatch=>{
+    dispatch({type:'DELETE_PRODUCT_REQUEST'})
+    axios
+        .post('/api/products/deleteproduct', {productId}).then(res=>{
+            dispatch({type:'DELETE_PRODUCT_SUCCESS', payload: res.data})
+            alert('Product Deleted!')
+            window.location.reload();
+
+        })
+        .catch(err=>{
+            dispatch({type:'DELETE_PRODUCT_FAILED', payload: err})
+            console.log(err);
+        })
 }

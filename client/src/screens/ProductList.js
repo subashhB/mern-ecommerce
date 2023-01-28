@@ -1,7 +1,7 @@
 import React, { useState , useEffect} from 'react'
 import { getAllUsersReducer } from '../reducers/userReducers';
 import { useDispatch, useSelector } from 'react-redux'
-import { getAllProducts } from '../actions/productActions';
+import { deleteProduct, getAllProducts } from '../actions/productActions';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 
@@ -26,14 +26,14 @@ export default function ProductList() {
           </tr>
         </thead>
         <tbody>
-          {products && products.map(products=>{
+          {products && products.map(product=>{
             return(
               <tr>
-                <td>{products.name}</td>
-                <td>{products.price}</td>
-                <td>{products.countInStock}</td>
-                <td>{products._id}</td>
-                <td><i className='fa fa-trash'></i></td>
+                <td>{product.name}</td>
+                <td>{product.price}</td>
+                <td>{product.countInStock}</td>
+                <td>{product._id}</td>
+                <td><i className='fa fa-trash' onClick={()=>dispatch(deleteProduct(product._id))}></i></td>
               </tr>
             )
           })}

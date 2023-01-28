@@ -1,4 +1,4 @@
-import { addProductReviewReducer, getAllProductsReducer, getProductByIdReducer } from "./reducers/productReducers";
+import { addProductReviewReducer, deleteProductReducer, getAllProductsReducer, getProductByIdReducer } from "./reducers/productReducers";
 import {cartReducer} from './reducers/cartReducers';
 import { deleteUserReducer, getAllUsersReducer, loginReducer, registerNewUserReducer, updateUserReducer } from "./reducers/userReducers";
 import {combineReducers} from 'redux';
@@ -15,7 +15,8 @@ const finalReducer = combineReducers({
     addProductReviewReducer: addProductReviewReducer,
     updateUserReducer: updateUserReducer,
     getAllUsersReducer: getAllUsersReducer,
-    deleteUserReducer: deleteUserReducer
+    deleteUserReducer: deleteUserReducer,
+    deleteProductReducer: deleteProductReducer
     
 })
 

@@ -42,6 +42,16 @@ router.post('/addreview', async(req, res) => {
     })
 });
 
+router.post('/deleteproduct', (req, res) => {
+    Product.findByIdAndDelete(req.body.productId,(err)=>{
+        if(err){
+            return res.status(400).json({message:'Somthing went wrong'});
+        }
+        else{
+            res.send('Product Deleted')
+        }
+    })
+});
 
 
 module.exports = router
