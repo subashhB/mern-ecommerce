@@ -80,3 +80,15 @@ export const deleteProduct = (productId) => dispatch=>{
             console.log(err);
         })
 }
+
+export const addProduct = (product)=> dispatch=>{
+    dispatch({type: 'ADD_PRODUCT_REQUEST'})
+    axios
+        .post('/api/products/addproduct', {product}).then(res=>{
+            console.log(res);
+            dispatch({type:'ADD_PRODUCT_SUCCESS', payload: res.data})
+        }).catch(err=>{
+            dispatch({type:'ADD_PRODUCT_FAILED', payload: err})
+            console.log(err)
+        })
+}
