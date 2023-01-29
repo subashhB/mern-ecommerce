@@ -53,5 +53,25 @@ router.post('/deleteproduct', (req, res) => {
     })
 });
 
+router.post('/addproduct', (req, res) => {
+    const {product} = req.body
+    const productModel = new Product({
+        name: product.name,
+        price: parseInt(product.price),
+        description: product.description,
+        countInStock: parseInt(product.countInStock),
+        image: product.imageUrl,
+        category: product.category
+    })
+    productModel.save(err =>{
+        if(err){
+            return res.status(400).json({message:'Something went Wrong'+err});
+        }
+        else{
+            res.send('New Product Added Successfully')
+        }
+    })
+});
+
 
 module.exports = router

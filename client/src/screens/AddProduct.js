@@ -1,16 +1,24 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { addProduct } from '../actions/productActions';
+import Loader from '../components/Loader';
+import Success from '../components/Success';
+import Error from '../components/Error';
+import { addProductReducer } from '../reducers/productReducers';
 
 export default function AddProduct() {
   const [name, setName] = useState('');
-  const [price, setPrice] = useState();
-  const [countInStock, setCountInStock] = useState();
+  const [price, setPrice] = useState('');
+  const [countInStock, setCountInStock] = useState('');
   const [imageUrl, setImageUrl] = useState('');
   const [category, setCategory] = useState('');
   const [description, setDescription] = useState('');
+
+  const addProductState = useSelector(state => state.addProductReducer)
+  const {success, error, loading} = addProductState;
   const dispatch = useDispatch()
 
-  const addProduct = (e)=>{
+  const addProductFunc = (e)=>{
     e.preventDefault();
     const product={
       name: name,
@@ -20,14 +28,17 @@ export default function AddProduct() {
       description: description,
       category: category,
     }
-    console.log(product);
+    dispatch(addProduct(product))
   }
   return (
     <div>
       <div className="row justify-content-center">
         <div className="col-md-8">
+          {loading && (<Loader/>)}
+          {success && (<Success success='Product added Successfully'/>)}
+          {error && (<Error error='Something went Wrong'/>)}
           <h3>Add Product</h3>
-          <form onSubmit={addProduct}>
+          <form onSubmit={addProductFunc}>
             <input type="text" className='form-control mb-2 mr-sm-2' placeholder='Product Name' required value={name} onChange={(e)=>{setName(e.target.value)}}/>
             <input type="text" className='form-control mb-2 mr-sm-2' placeholder='Price' required value={price} onChange={(e)=>{setPrice(e.target.value)}}/>
             <input type="text" className='form-control mb-2 mr-sm-2' placeholder='Description' required value={description} onChange={(e)=>{setDescription(e.target.value)}}/>

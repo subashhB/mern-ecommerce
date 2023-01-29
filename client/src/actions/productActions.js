@@ -87,6 +87,7 @@ export const addProduct = (product)=> dispatch=>{
         .post('/api/products/addproduct', {product}).then(res=>{
             console.log(res);
             dispatch({type:'ADD_PRODUCT_SUCCESS', payload: res.data})
+            window.location.reload()
         }).catch(err=>{
             dispatch({type:'ADD_PRODUCT_FAILED', payload: err})
             console.log(err)
