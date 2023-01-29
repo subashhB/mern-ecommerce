@@ -2,6 +2,7 @@ import React, { useState , useEffect} from 'react'
 import { getAllUsersReducer } from '../reducers/userReducers';
 import { useDispatch, useSelector } from 'react-redux'
 import { deleteProduct, getAllProducts } from '../actions/productActions';
+import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Error from '../components/Error';
 
@@ -22,7 +23,7 @@ export default function ProductList() {
             <th>Price</th>
             <th>Stock</th>
             <th>ID</th>
-            <th>Delete</th>
+            <th>Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -33,7 +34,10 @@ export default function ProductList() {
                 <td>{product.price}</td>
                 <td>{product.countInStock}</td>
                 <td>{product._id}</td>
-                <td><i className='fa fa-trash' onClick={()=>dispatch(deleteProduct(product._id))}></i></td>
+                <td>
+                  <i className='fa fa-trash' onClick={()=>dispatch(deleteProduct(product._id))}></i>
+                  <Link to={`/admin/editproduct/${product._id}`}><i className='ms-2 fas fa-edit'></i></Link>
+                </td>
               </tr>
             )
           })}

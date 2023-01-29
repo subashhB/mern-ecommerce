@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link , Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import AddProduct from './AddProduct'
+import EditProduct from './EditProduct'
 import ProductList from './ProductList'
 import UsersList from './UsersList'
 
@@ -18,6 +19,7 @@ export default function AdminScreen() {
                     <Route path='userslist' element={<UsersList/>}></Route>
                     <Route path='productslist' element={<ProductList/>}></Route>
                     <Route path='addnewproduct' element={<AddProduct/>}></Route>
+                    <Route path='editproduct/:id' element={<EditProduct/>}></Route>
                 </Routes>
             </div>
         </div>
