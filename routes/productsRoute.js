@@ -73,5 +73,24 @@ router.post('/addproduct', (req, res) => {
     })
 });
 
+router.post('/updateproduct', (req, res) => {
+    const {productId, updatedProduct} = req.body 
+    Product.findByIdAndUpdate(productId,{
+        name: updatedProduct.name,
+        price: updatedProduct.price,
+        category: updatedProduct.category,
+        description: updatedProduct.description,
+        image: updatedProduct.imageUrl,
+        countInStock: updatedProduct.countInStock
+    },(err)=>{
+        if(err){
+            return res.status(400).json({message:'Something went Wrong' +err});
+        }
+        else{
+            res.send('Product successfully updated!')
+        }
+    })
+
+});
 
 module.exports = router

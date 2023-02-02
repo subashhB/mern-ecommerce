@@ -94,3 +94,25 @@ export const addProductReducer = (state={}, action)=>{
     }
 }
 
+export const updateProductReducer = (state={}, action)=>{
+    switch(action.type){
+        case 'UPDATE_PRODUCT_REQUEST': return{
+            ...state,
+            updating: true
+        }
+
+        case 'UPDATE_PRODUCT_SUCCESS': return {
+            ...state,
+            updating: false,
+            success: true
+        }
+        
+        case 'UPDATE_PRODUCT_FAILED': return{
+            ...state,
+            updating: false,
+            updateerror: action.payload
+        }
+        default: return state
+    }
+}
+

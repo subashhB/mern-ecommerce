@@ -93,3 +93,16 @@ export const addProduct = (product)=> dispatch=>{
             console.log(err)
         })
 }
+
+export const updateProduct = (productId, updatedProduct)=> dispatch=>{
+    dispatch({type: 'UPDATE_PRODUCT_REQUEST'})
+    axios
+        .post('/api/products/updateproduct', {productId, updatedProduct}).then(res=>{
+            console.log(res);
+            dispatch({type:'UPDATE_PRODUCT_SUCCESS', payload: res.data})
+            window.location.href = '/admin/productlist';
+        }).catch(err=>{
+            dispatch({type:'UPDATE_PRODUCT_FAILED', payload: err})
+            console.log(err)
+        })
+}
